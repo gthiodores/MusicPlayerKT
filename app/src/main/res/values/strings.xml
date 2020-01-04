@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">Music Player KT</string>
+
+    <string name="new_playlist">New Playlist</string>
+    <string name="select_playlist">Select playlist</string>
+    <string name="cancel">Cancel</string>
+    <string name="song_duration">%1$s:%2$s</string>
+    <string name="confirm">Confirm</string>
+    <string name="stop">Stop</string>
+    <string name="all_music">All Music</string>
+    <string name="playlist_name">Playlist Name</string>
+    <string name="create">Create</string>
+    <string name="favorite">Favorite</string>
+    <string name="add_songs">Add Songs</string>
+    <string name="favorites">Favorites</string>
+    <string name="volume">Volume</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="volume_setting">Volume setting</string>
+</resources>

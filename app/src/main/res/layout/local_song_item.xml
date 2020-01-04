@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="localSong"
+            type="com.example.android.musicplayerkt.database.LocalSong" />
+        <variable
+            name="clickListener"
+            type="com.example.android.musicplayerkt.adapter.SongClickListener" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/song_item_layer"
+        android:focusable="true"
+        android:onClick="@{() -> clickListener.onClick(localSong)}">
+
+        <TextView
+            android:id="@+id/item_song_title"
+            style="@style/BoldTextViewStyle"
+            android:layout_margin="16dp"
+            android:text="@{localSong.title}"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toStartOf="@id/item_song_duration"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="SONG TITLE" />
+
+        <TextView
+            android:id="@+id/item_song_artist"
+            style="@style/BaseTextViewStyle"
+            android:layout_margin="16dp"
+            android:text="@{localSong.artist}"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/item_song_duration"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/item_song_title"
+            tools:text="SONG ARTIST" />
+
+        <TextView
+            android:id="@+id/item_song_duration"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:textSize="12sp"
+            app:formatDuration="@{localSong.duration}"
+            app:layout_constraintBottom_toBottomOf="@id/item_song_title"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/item_song_title"
+            tools:text="03:40" />
+
+        <ImageView
+            android:id="@+id/item_song_favourite"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"
+            android:clickable="true"
+            android:contentDescription="@string/favorite"
+            android:focusable="true"
+            app:favouriteMeter="@{localSong.favourite}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/item_song_duration"
+            tools:src="@drawable/ic_favorite_border_16" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.example.android.musicplayerkt.viewmodel.LocalViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".fragment.FavoritesFragment">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/favorite_song_recycler"
+            style="@style/BaseRecyclerViewStyle"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintBottom_toTopOf="@id/favorite_control_widget"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:listitem="@layout/local_song_item" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/favorite_control_widget"
+            style="@style/BaseViewStyle"
+            android:layout_margin="16dp"
+            app:cardCornerRadius="8dp"
+            app:showView="@{viewModel.controlVisible}"
+            app:layout_constraintTop_toBottomOf="@id/favorite_song_recycler"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/favorite_control_title"
+                    style="@style/BoldTextViewStyle"
+                    android:layout_margin="16dp"
+                    android:text="@{viewModel.currentSong.title}"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/favorite_button_previous"
+                    tools:text="SONG TITLE"/>
+
+                <TextView
+                    android:id="@+id/favorite_control_artist"
+                    style="@style/BaseTextViewStyle"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginBottom="16dp"
+                    android:text="@{viewModel.currentSong.artist}"
+                    app:layout_constraintStart_toStartOf="@id/favorite_control_title"
+                    app:layout_constraintTop_toBottomOf="@id/favorite_control_title"
+                    app:layout_constraintEnd_toEndOf="@id/favorite_control_title"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    tools:text="SONG ARTIST"/>
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/favorite_button_play_pause"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:layout_margin="8dp"
+                    android:onClick="@{() -> viewModel.onPlayPauseButtonClicked()}"
+                    app:setPausePlayImage="@{viewModel.isPlaying()}"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:src="@drawable/ic_play_circle_outline_black_24dp"/>
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/favorite_button_stop"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:layout_margin="8dp"
+                    android:onClick="@{() -> viewModel.stopPlayback()}"
+                    android:src="@drawable/ic_stop_black_24dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/favorite_button_play_pause" />
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/favorite_button_previous"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:layout_margin="8dp"
+                    android:onClick="@{() -> viewModel.onPreviousButtonClicked()}"
+                    android:src="@drawable/ic_skip_previous_32dp"
+                    app:layout_constraintEnd_toStartOf="@id/favorite_button_play_pause"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/favorite_button_next"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:layout_margin="8dp"
+                    android:onClick="@{() -> viewModel.onNextButtonClicked()}"
+                    android:src="@drawable/ic_skip_next_32dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/favorite_button_stop"
+                    app:layout_constraintTop_toBottomOf="@id/favorite_button_play_pause" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.cardview.widget.CardView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

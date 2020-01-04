@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="localSong"
+            type="com.example.android.musicplayerkt.database.LocalSong" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/song_item_layer"
+        android:focusable="true">
+
+        <CheckBox
+            android:id="@+id/add_check"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:clickable="false"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/add_song_title"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/add_song_title"
+            style="@style/BaseTextViewStyle"
+            android:layout_marginTop="16dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="16dp"
+            android:text="@{localSong.title}"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toStartOf="@id/add_song_duration"
+            app:layout_constraintStart_toEndOf="@id/add_check"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="SONG TITLE" />
+
+        <TextView
+            android:id="@+id/add_song_artist"
+            style="@style/BaseTextViewStyle"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"
+            android:text="@{localSong.artist}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/add_song_duration"
+            app:layout_constraintStart_toStartOf="@id/add_song_title"
+            app:layout_constraintTop_toBottomOf="@id/add_song_title"
+            tools:text="SONG ARTIST" />
+
+        <TextView
+            android:id="@+id/add_song_duration"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            app:formatDuration="@{localSong.duration}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/add_song_title"
+            app:layout_constraintBottom_toBottomOf="@id/add_song_title"
+            tools:text="03:40" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_navigation"
+    app:startDestination="@id/localFragment">
+
+    <fragment
+        android:id="@+id/localFragment"
+        android:name="com.example.android.musicplayerkt.fragment.LocalFragment"
+        android:label="Music Player"
+        tools:layout="@layout/fragment_local" >
+        <action
+            android:id="@+id/action_localFragment_to_selectPlaylistDialogFragment"
+            app:destination="@id/selectPlaylistFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+        <action
+            android:id="@+id/action_localFragment_to_addSongsFragment"
+            app:destination="@id/addSongsFragment" />
+        <action
+            android:id="@+id/action_localFragment_to_favoritesFragment"
+            app:destination="@id/favoritesFragment" />
+        <action
+            android:id="@+id/action_localFragment_to_volumeFragment2"
+            app:destination="@id/volumeFragment" />
+    </fragment>
+    <dialog
+        android:id="@+id/newPlaylistDialogFragment"
+        android:name="com.example.android.musicplayerkt.fragment.NewPlaylistDialogFragment"
+        android:label="New Playlist"
+        tools:layout="@layout/fragment_new_playlist_dialog" />
+    <fragment
+        android:id="@+id/selectPlaylistFragment"
+        android:name="com.example.android.musicplayerkt.fragment.SelectPlaylistFragment"
+        android:label="Select Playlist"
+        tools:layout="@layout/fragment_select_playlist_dialog" >
+        <action
+            android:id="@+id/action_selectPlaylistFragment_to_localFragment"
+            app:destination="@id/localFragment"
+            app:enterAnim="@anim/nav_default_exit_anim"
+            app:exitAnim="@anim/nav_default_enter_anim"
+            app:popEnterAnim="@anim/nav_default_pop_exit_anim"
+            app:popExitAnim="@anim/nav_default_pop_enter_anim" />
+        <action
+            android:id="@+id/action_selectPlaylistFragment_to_newPlaylistDialogFragment"
+            app:destination="@id/newPlaylistDialogFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addSongsFragment"
+        android:name="com.example.android.musicplayerkt.fragment.AddSongsFragment"
+        android:label="Add Songs To Playlist" />
+    <fragment
+        android:id="@+id/favoritesFragment"
+        android:name="com.example.android.musicplayerkt.fragment.FavoritesFragment"
+        android:label="Favorites" />
+    <fragment
+        android:id="@+id/volumeFragment"
+        android:name="com.example.android.musicplayerkt.fragment.VolumeFragment"
+        android:label="Volume Setting" />
+</navigation>
