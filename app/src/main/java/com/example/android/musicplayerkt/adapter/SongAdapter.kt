@@ -9,9 +9,6 @@ import com.example.android.musicplayerkt.R
 import com.example.android.musicplayerkt.database.LocalSong
 import com.example.android.musicplayerkt.databinding.LocalSongItemBinding
 
-/**
- * TODO: Make ViewHolder a lifecycle owner to add item highlight support
- * */
 class SongAdapter(private val clickListener : SongClickListener) :
     ListAdapter <LocalSong, SongAdapter.ViewHolder>(SongDiffCallback()) {
 

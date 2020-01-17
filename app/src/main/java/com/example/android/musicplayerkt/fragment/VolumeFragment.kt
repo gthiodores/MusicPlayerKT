@@ -15,9 +15,6 @@ import com.example.android.musicplayerkt.databinding.FragmentVolumeBinding
 import com.example.android.musicplayerkt.viewmodel.LocalViewModel
 import com.example.android.musicplayerkt.viewmodel.LocalViewModelFactory
 
-/**
- * A simple [Fragment] subclass.
- */
 class VolumeFragment : Fragment() {
 
     override fun onCreateView(
